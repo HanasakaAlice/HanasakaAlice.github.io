@@ -74,13 +74,16 @@ body {
 
 /* 投稿要素 */
 .post, .post-summary {
+  /* 既存のスタイルがある場合はそれを活かしつつ、追加or変更 */
   background-color: #fff;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  border-radius: 5px;
-  border: 1px solid #eee;
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  /* ここからが枠線・角丸・シャドウなど */
+  border: 3px double var(--accent-color); /* ダブル線 */
+  border-radius: 8px;                    /* 角を少し丸める */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);/* さりげない影 */
 }
+
 
 .post h2, .post-summary h3 {
   margin-top: 0;
