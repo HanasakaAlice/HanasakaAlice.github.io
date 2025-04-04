@@ -1,0 +1,88 @@
+/* カラーテーマ用のCSS変数を定義 */
+:root {
+  --main-bg-color: #cceeff; /* 水色っぽい背景色 */
+  --accent-color: #007acc;  /* アクセントに使う濃い青 */
+  --text-color: #333;       /* 文字色 */
+}
+
+body {
+  margin: 0;
+  font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  color: var(--text-color);
+  background: #fefefe; /* 全体の背景は淡い白 */
+}
+
+/* ヘッダー */
+.site-header {
+  background: var(--main-bg-color);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.site-header p {
+  margin: 0.5rem 0 0;
+}
+
+/* ナビゲーションバー */
+.site-nav {
+  background: var(--accent-color);
+  padding: 0.5rem 1rem;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;      /* 横並び */
+  gap: 1rem;          /* リンク同士の隙間 */
+  justify-content: center;
+}
+
+.site-nav li {
+  margin: 0;
+}
+
+.site-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* メインコンテンツ */
+.content {
+  max-width: 650px;   /* ブログっぽく横幅を狭める */
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* 記事(投稿) */
+.post {
+  background-color: #fff;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.post h2 {
+  margin-top: 0;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* フッター */
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--main-bg-color);
+  margin-top: 2rem;
+}
