@@ -1,15 +1,22 @@
-/* カラーテーマ用のCSS変数を定義 */
+/* 
+  鏡の国のアリス感を演出するために、
+  少し幻想的な淡いカラーや、枠線を活かしたデザインを追加。
+*/
+
+/* カラーテーマ（変数） */
 :root {
-  --main-bg-color: #cceeff; /* 水色っぽい背景色 */
-  --accent-color: #007acc;  /* アクセントに使う濃い青 */
-  --text-color: #333;       /* 文字色 */
+  --main-bg-color: #d9eef7; /* 淡い水色 (鏡の向こうのイメージ) */
+  --accent-color: #9999cc;  /* ほんのりパープル系 */
+  --text-color: #333;
+  --title-font: "Trebuchet MS", "Helvetica", sans-serif;
 }
 
+/* ベーススタイル */
 body {
   margin: 0;
   font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  background: #fafafa;
   color: var(--text-color);
-  background: #fefefe; /* 全体の背景は淡い白 */
 }
 
 /* ヘッダー */
@@ -17,29 +24,34 @@ body {
   background: var(--main-bg-color);
   text-align: center;
   padding: 2rem 1rem;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
 }
 
 .site-header h1 {
   margin: 0;
+  font-family: var(--title-font);
   font-size: 2rem;
 }
 
-.site-header p {
+.subtitle {
   margin: 0.5rem 0 0;
+  font-style: italic;
+  color: #666;
 }
 
-/* ナビゲーションバー */
+/* ナビゲーション */
 .site-nav {
   background: var(--accent-color);
   padding: 0.5rem 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .site-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;      /* 横並び */
-  gap: 1rem;          /* リンク同士の隙間 */
+  display: flex;
+  gap: 1rem;
   justify-content: center;
 }
 
@@ -55,22 +67,25 @@ body {
 
 /* メインコンテンツ */
 .content {
-  max-width: 650px;   /* ブログっぽく横幅を狭める */
+  max-width: 700px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-/* 記事(投稿) */
-.post {
+/* 投稿要素 */
+.post, .post-summary {
   background-color: #fff;
   padding: 1.5rem;
   margin-bottom: 2rem;
   border-radius: 5px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
 }
 
-.post h2 {
+.post h2, .post-summary h3 {
   margin-top: 0;
+  font-family: var(--title-font);
+  color: #333;
 }
 
 .date {
@@ -79,10 +94,24 @@ body {
   margin-bottom: 1rem;
 }
 
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  background: #7f7fb3; /* hoverで少し濃いめに */
+}
+
 /* フッター */
 .site-footer {
   text-align: center;
   padding: 1rem;
   background: var(--main-bg-color);
-  margin-top: 2rem;
+  border-top: 2px solid rgba(0,0,0,0.1);
 }
