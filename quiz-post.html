@@ -1,112 +1,81 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>クイズページ</title>
-  <style>
-    /* --- 全体レイアウト（適宜調整） --- */
-    body {
-      font-family: sans-serif;
-      margin: 20px;
-    }
-    h1 {
-      margin-bottom: 1rem;
-    }
-
-    /* --- クイズコンテナ --- */
-    .quiz-container {
-      margin-bottom: 2rem; /* クイズを複数出すときに備えて余白 */
-      padding: 1rem;
-      background: #f9f9f9;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    /* --- 問題文 --- */
-    .quiz-question {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
-    /* --- 選択肢のボタン --- */
-    .choices button {
-      display: inline-block;
-      padding: 8px 16px;
-      margin-right: 1rem;
-      border: 2px solid #aaa;
-      border-radius: 4px;
-      background: #fff;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .choices button:hover {
-      background: #eee;
-    }
-
-    /* --- 正解ボタンを押したときの見た目 --- */
-    .correct {
-      border-color: green;
-      color: green;
-      font-weight: bold; /* お好みで */
-    }
-
-    /* --- 不正解ボタンを押したときの見た目 --- */
-    .incorrect {
-      border-color: red;
-      color: red;
-      font-weight: bold; /* お好みで */
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>クイズ投稿 - 有栖川先生の備忘録</title>
+  <!-- 既存のCSSファイルを読み込み（post1.html等と同じ） -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>クイズ</h1>
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <h1>有栖川先生の備忘録</h1>
+    <p class="subtitle">～鏡の国へようこそ～</p>
+  </header>
 
-  <!-- クイズ 1 -->
-  <div class="quiz-container">
-    <div class="quiz-question">
-      Q1. 「りんご」は英語でなんでしょう？
-    </div>
-    <div class="choices">
-      <!-- 1つ目のボタンを正解にする場合は checkAnswer(true, this) -->
-      <button onclick="checkAnswer(true, this)">Apple</button>
-      <!-- 2つ目は不正解にする場合は checkAnswer(false, this) -->
-      <button onclick="checkAnswer(false, this)">Orange</button>
-    </div>
-  </div>
+  <!-- ナビゲーション -->
+  <nav class="site-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <!-- 必要に応じて項目追加 -->
+    </ul>
+  </nav>
 
-  <!-- クイズ 2 -->
-  <div class="quiz-container">
-    <div class="quiz-question">
-      Q2. 「ネコ」は英語でなんでしょう？
-    </div>
-    <div class="choices">
-      <button onclick="checkAnswer(false, this)">Dog</button>
-      <button onclick="checkAnswer(true, this)">Cat</button>
-    </div>
-  </div>
+  <!-- メインコンテンツ -->
+  <main class="content">
+    <!-- 他の投稿と同じレイアウトにするため <article class="post"> を使用 -->
+    <article class="post">
+      <h2>鏡の国クイズ</h2>
+      <p class="date">投稿日: 2025-04-XX</p>
+      <p>ここでは、鏡の国にまつわるクイズに挑戦できます。正解だと思う選択肢をクリックしてください。</p>
+      
+      <!-- ▼ クイズ本体を配置 ▼ -->
+      <div class="quiz-container" style="margin-bottom: 1.5rem;">
+        <p class="quiz-question"><strong>Q1.</strong> 「りんご」は英語でなんでしょう？</p>
+        <!-- 正解を true, 不正解を false に設定 -->
+        <button onclick="checkAnswer(true, this)">Apple</button>
+        <button onclick="checkAnswer(false, this)">Orange</button>
+      </div>
 
-  <!-- 必要に応じてクイズを増やす -->
+      <div class="quiz-container">
+        <p class="quiz-question"><strong>Q2.</strong> 「ネコ」は英語でなんでしょう？</p>
+        <button onclick="checkAnswer(false, this)">Dog</button>
+        <button onclick="checkAnswer(true, this)">Cat</button>
+      </div>
+      <!-- クイズを増やしたい場合は同様のブロックを追加 -->
+    </article>
+  </main>
 
+  <!-- フッター -->
+  <footer class="site-footer">
+    <p>&copy; 2025 有栖川先生の備忘録</p>
+  </footer>
+
+  <!-- ▼ クイズ判定用のJavaScript ▼ -->
   <script>
     /**
-     * 正解・不正解を判定し、見た目とマークを変える関数。
-     *  - isCorrect: trueなら正解、falseなら不正解
-     *  - element: クリックされたボタンの要素
+     * クリックした選択肢が正解かどうかを判定し、色とマークを変える
+     * @param {boolean} isCorrect - trueなら正解、falseなら不正解
+     * @param {HTMLElement} elem - クリックされたボタン要素
      */
-    function checkAnswer(isCorrect, element) {
-      // 正解なら緑色 + ✔️、不正解なら赤色 + ❌
+    function checkAnswer(isCorrect, elem) {
+      // 正解なら緑色と ✔️、不正解なら赤色と ❌
       if (isCorrect) {
-        element.classList.add("correct");
-        element.innerHTML += " ✔️";
+        elem.style.borderColor = "green";
+        elem.textContent += " ✔️";
       } else {
-        element.classList.add("incorrect");
-        element.innerHTML += " ❌";
+        elem.style.borderColor = "red";
+        elem.textContent += " ❌";
       }
 
-      // 同じ問題内の全ボタンを無効化する（何度も選べないように）
-      const parent = element.parentNode;             // .choices
+      // 同じクイズ内のボタンをすべて無効化（何度もクリックできないように）
+      const parent = elem.parentNode;
       const buttons = parent.querySelectorAll("button");
-      buttons.forEach(btn => btn.disabled = true);
+      buttons.forEach(button => {
+        button.disabled = true;
+      });
     }
   </script>
 </body>
